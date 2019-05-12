@@ -15,12 +15,17 @@ public class YalandanFarm {
 		System.out.println("Serving dairy cattle's meal.");
 		allCattles.Add(dairyCattle);
 		allCattles.Add(beefCattle);
-		allCattles.Accept(falM);
 		allCattles.Accept(veterinary);
+		Cattle beefCattle2=new BeefCattle("Beef cattle number 2");
+		ElectronicDevice ed2= new CattleElectronicDevice(beefCattle2,3.3,zigbeeSignal);
+		allCattles.Add(beefCattle2);
+		allCattles.Accept(falM);
 		YalandanFarm.createMeal(dairyCattle);
 		YalandanFarm.displayMeals();
 		ed.Attach(ercan);
 		ed1.Attach(ercan);
+		ed2.Attach(ercan);
+		ed2.setLocation(50);
 		ed.setLocation(5);
 		ed.setLocation(-5);
 		ed1.setLocation(11);

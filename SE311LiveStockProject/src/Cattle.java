@@ -4,6 +4,7 @@ interface Animal{
 	public void Accept(Visitor visitor);
 }
 abstract public class Cattle implements Animal{
+	private int id;
 	protected String _vaccinationInfo;
 	protected Singleton _singleton=new Singleton();
 	protected String name;
@@ -12,6 +13,7 @@ abstract public class Cattle implements Animal{
 		this.name=name;
 		setvaccinationInfo("vaccination has not been injected before.");
 		_singleton.addCattle(this);
+		setId(0);
 	}
 	abstract public Protein serveProtein();
 	abstract public Carbonhydrate serveCarbonhydrate();
@@ -20,6 +22,12 @@ abstract public class Cattle implements Animal{
 	}
 	protected void setvaccinationInfo(String _vaccinationInfo) {
 		this._vaccinationInfo = _vaccinationInfo;
+	}
+	protected int getId() {
+		return id;
+	}
+	protected void setId(int id) {
+		this.id = id;
 	}
 }	
 class Cattles {
