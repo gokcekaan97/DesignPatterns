@@ -7,14 +7,14 @@ abstract public class Visitor {
 }
 class veterinaryVisitor extends Visitor{
 	public void Visit(DairyCattle dairyCattle) {
-		dairyCattle.setvaccinationInfo(dairyCattle.getName() +" has been injected :"+dateOf);
 		dairyCattle.setId(id);
+		dairyCattle.setvaccinationInfo(dairyCattle.getName() +" has been injected :"+dateOf+"(Cattle id :"+dairyCattle.getId()+")");
 		System.out.println(dairyCattle.getvaccinationInfo());
 		id++;
 	}
 	public void Visit(BeefCattle beefCattle) {
-		beefCattle.setvaccinationInfo(beefCattle.getName() +" has been injected :"+dateOf);
 		beefCattle.setId(id);
+		beefCattle.setvaccinationInfo(beefCattle.getName() +" has been injected :"+dateOf+"(Cattle id :"+beefCattle.getId()+")");
 		System.out.println(beefCattle.getvaccinationInfo());
 		id++;
 	}

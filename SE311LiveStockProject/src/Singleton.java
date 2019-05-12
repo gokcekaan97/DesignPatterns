@@ -32,15 +32,29 @@ public class Singleton{
     }
 	public void addCattle(Cattle cattle){
 		Connection conn =null;
-		PreparedStatement statement=null;
-		String query="INSERT INTO Cattle (CattleName) VALUES (?)";
+		Connection conn2 = null;
+		Statement statement=null;
+		Statement statement2=null;
+		String query1 = "SELECT CattleName FROM Cattle WHERE CattleName=('"+cattle.getName()+"')";
 		try {
-			conn=getConnection();
-			statement=conn.prepareStatement(query);
-			statement.setString(1, cattle.getName());
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			conn2 = getConnection();
+			statement2 = conn2.createStatement();
+			ResultSet rs = statement2.executeQuery(query1);
+			if (!rs.next()) {
+				String query = "INSERT INTO Cattle (CattleName) VALUES ('" + cattle.getName() + "')";
+				try {
+					conn = getConnection();
+					statement = conn.createStatement();
+					statement.execute(query);
+					conn.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			} 
+			conn2.close();
+		} catch (Exception e) {
+			// TODO: handle exception
 		}
 	}
 	public void setCattleLocation(ElectronicDevice electronicDevice){
@@ -51,6 +65,7 @@ public class Singleton{
 			conn=getConnection();
 			statement=conn.createStatement();
 			statement.executeUpdate(query);
+			conn.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

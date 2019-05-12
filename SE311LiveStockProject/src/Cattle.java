@@ -4,9 +4,9 @@ interface Animal{
 	public void Accept(Visitor visitor);
 }
 abstract public class Cattle implements Animal{
+	protected Singleton _singleton=new Singleton();
 	private int id;
 	protected String _vaccinationInfo;
-	protected Singleton _singleton=new Singleton();
 	protected String name;
 	public String getName(){return name;}
 	public Cattle(String name){
