@@ -1,10 +1,12 @@
 import java.time.LocalDate;
+//"Visitor"
 abstract public class Visitor {
 	protected static int id=1; 
 	protected LocalDate dateOf=LocalDate.now();
 	public abstract void Visit(DairyCattle dairyCattle);
 	public abstract void Visit(BeefCattle BeefCattle);
 }
+//"ConcreteVisitor1 - veterinaryVisitor"
 class veterinaryVisitor extends Visitor{
 	public void Visit(DairyCattle dairyCattle) {
 		dairyCattle.setId(id);
@@ -19,6 +21,7 @@ class veterinaryVisitor extends Visitor{
 		id++;
 	}
 }
+//"ConcreteVisitor2 - FALMinisteryVisitor"
 class FALMinisteryVisitor extends Visitor{
 	public void Visit(DairyCattle dairyCattle) {
 		if(dairyCattle.getId()==0){

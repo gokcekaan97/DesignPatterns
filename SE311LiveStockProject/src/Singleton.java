@@ -1,14 +1,17 @@
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-
+//The classes and/or objects participating in this pattern are:
+//1. Singleton   (Singleton)
+//		Defines an Instance operation that lets clients access its unique
+//		instance. Instance is a class operation. Responsible for
+//		creating and maintaining its own unique instance.
+//   	Which provides access to a single database from a uniqueInstance.
 public class Singleton{
-	private static Singleton uniqueInstance;
-	public Singleton(){
-		
+	private static Singleton uniqueInstance=null;
+	private Singleton(){ // Constructor (private).
 	}
 	public static Singleton getInstance(){
 		if(uniqueInstance==null){
@@ -30,7 +33,8 @@ public class Singleton{
         }
         return dbConnection;
     }
-	public void addCattle(Cattle cattle){
+	//When a cattle is created, stores the cattle's name into the database.
+	public void addCattle(Cattle cattle){ 
 		Connection conn =null;
 		Connection conn2 = null;
 		Statement statement=null;
@@ -57,6 +61,8 @@ public class Singleton{
 			// TODO: handle exception
 		}
 	}
+	//When a cattle is attached to an electronic device,
+	//stores the cattle's location into the database.
 	public void setCattleLocation(ElectronicDevice electronicDevice){
 		Connection conn =null;
 		Statement statement=null;

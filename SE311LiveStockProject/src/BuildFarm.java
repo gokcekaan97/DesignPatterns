@@ -1,6 +1,7 @@
 import java.util.ArrayList;
-
+//The 'Client' of AbstractFactory Pattern.
 public class BuildFarm {
+	// Object creation is delegated to factory.
 	private ArrayList<Food> food;
 	public void createMeal(Cattle cattle) {
 		food = new ArrayList<Food>();

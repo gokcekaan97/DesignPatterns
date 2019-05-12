@@ -1,10 +1,11 @@
-
+//'Observer'  ==> Abstract Observer.
 interface Observer {
 	public void Update(ElectronicDevice electronicDevice);
 }
+//'ConcreteObserver' ==> Farmer
 class Farmer{
-	private Cattle cattle;
-	private double cattleLocation;
+	private Cattle cattle; 
+	private double cattleLocation; // Internal Observer state
 	private String name;
 	private ElectronicDevice _electronicDevice;
 	public Farmer(String name){
@@ -12,7 +13,7 @@ class Farmer{
 	}
 	public void Update(ElectronicDevice electronicDevice){
 		//current cattle type needed.
-		this._electronicDevice=electronicDevice;
+		this._electronicDevice=electronicDevice; // Reference to Subject
 		this.cattleLocation=electronicDevice.getLocation();
 		this.cattle=electronicDevice.getCattle();
 		System.out.println("Notify that current location of "+cattle.getName()+" is outside of farm boundaries. '"+cattleLocation+"'");
