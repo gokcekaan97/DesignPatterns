@@ -1,9 +1,11 @@
 
 abstract public class Cattle {
+	protected Singleton _singleton=new Singleton();
 	protected String name;
 	public String getName(){return name;}
 	public Cattle(String name){
 		this.name=name;
+		_singleton.addCattle(this);
 	}
 	abstract public Protein serveProtein();
 	abstract public Carbonhydrate serveCarbonhydrate();

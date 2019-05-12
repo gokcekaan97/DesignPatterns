@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 
 abstract class ElectronicDevice{
+	protected Singleton _singleton = new Singleton();
 	protected Signal _signal;
 	protected double _location;
 	protected Cattle _cattle;
@@ -32,8 +33,9 @@ class CattleElectronicDevice extends ElectronicDevice{
 	}
 	public void setLocation(double location){
 		// make the location randomized.
-		_signal.sendLocation(location);
 		_location=location;
+		_signal.sendLocation(location);
+		_singleton.setCattleLocation(this);
 		if (location<0||location>10) {
 			Notify();
 		}
