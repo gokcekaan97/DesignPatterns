@@ -10,8 +10,8 @@ abstract class Protein extends Food {
 	// taking the weight in grams. (Cattle)
 	abstract public double getWeight();
 }
-//An 'Abstract Product Carbonhydrate' class
-abstract class Carbonhydrate extends Food {
+//An 'Abstract Product Carbohydrate' class
+abstract class Carbohydrate extends Food {
 	abstract public String displayType();
 	abstract public double getWeight();
 }
@@ -41,8 +41,8 @@ class Canola extends Protein{
 		return this._gram;
 	}
 }
-//A 'ConcreteProduct1 Carbonhydrate-Wheat' class
-class Wheat extends Carbonhydrate{
+//A 'ConcreteProduct1 Carbohydrate-Wheat' class
+class Wheat extends Carbohydrate{
 	public Wheat(double gram){
 		System.out.println("Wheat is served.");
 		this._gram=gram;
@@ -54,8 +54,8 @@ class Wheat extends Carbonhydrate{
 		return this._gram;
 	}	
 }
-//A 'ConcreteProduct2 Carbonhydrate-Corn' class
-class Corn extends Carbonhydrate{
+//A 'ConcreteProduct2 Carbohydrate-Corn' class
+class Corn extends Carbohydrate{
 	public Corn(double gram){
 		System.out.println("Corn is served.");
 		this._gram=gram;

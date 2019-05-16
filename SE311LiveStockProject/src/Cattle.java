@@ -7,7 +7,8 @@ interface Animal{
 }
 //ConcreteElement  (Cattle)
 //implements an Accept operation that
-//takes a visitor as an argument
+//takes a visitor as an argument.
+//It is also our AbstractFactory (Cattle)
 abstract public class Cattle implements Animal{
 	protected Singleton _singleton= Singleton.getInstance(); //from Singleton class 
 	private int id;
@@ -21,20 +22,21 @@ abstract public class Cattle implements Animal{
 		setId(0);
 	}
 	abstract public Protein serveProtein();
-	abstract public Carbonhydrate serveCarbonhydrate();
+	abstract public Carbohydrate serveCarbohydrate();
 	protected String getvaccinationInfo() {
 		return _vaccinationInfo;
 	}
-	protected void setvaccinationInfo(String _vaccinationInfo) {
+	public void setvaccinationInfo(String _vaccinationInfo) {
 		this._vaccinationInfo = _vaccinationInfo;
 	}
-	protected int getId() {
+	public int getId() {
 		return id;
 	}
-	protected void setId(int id) {
+	public void setId(int id) {
 		this.id = id;
 	}
-}	
+}
+//ConcreteFactory1 (Dairy Cattle) uses both Visitor & Abstract Factory Pattern
 class DairyCattle extends Cattle {
 	public DairyCattle(String name){
 		super(name);
@@ -42,11 +44,12 @@ class DairyCattle extends Cattle {
 	public Protein serveProtein(){
 		return new Soybean(5);
 	}
-	public Carbonhydrate serveCarbonhydrate(){
+	public Carbohydrate serveCarbohydrate(){
 		return new Corn(10);
 	}
 	public void Accept(Visitor visitor) {visitor.Visit(this);}
 }
+//ConcreteFactory2 (Beef Cattle) uses both Visitor & Abstract Factory Pattern
 class BeefCattle extends Cattle{
 	public BeefCattle(String name ){
 		super(name);
@@ -54,12 +57,12 @@ class BeefCattle extends Cattle{
 	public Protein serveProtein(){
 		return new Canola(25);
 	}
-	public Carbonhydrate serveCarbonhydrate(){
+	public Carbohydrate serveCarbohydrate(){
 		return new Wheat(10);
 	}
 	public void Accept(Visitor visitor) {visitor.Visit(this);}
 }
-//ObjectStructure  (Cattles)
+//ObjectStructure (Cattles) from Visitor Pattern
 class Cattles {
 	public void Add(Cattle cattle){ cattles.add(cattle);};
 	public void Remove(Cattle cattle) {

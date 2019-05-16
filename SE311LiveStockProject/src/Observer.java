@@ -3,7 +3,7 @@ interface Observer {
 	public void Update(ElectronicDevice electronicDevice);
 }
 //'ConcreteObserver' ==> Farmer
-class Farmer{
+class Farmer implements Observer{
 	private Cattle cattle; 
 	private double cattleLocation; // Internal Observer state
 	private String name;
