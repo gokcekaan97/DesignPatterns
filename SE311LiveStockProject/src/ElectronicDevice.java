@@ -36,7 +36,6 @@ class CattleElectronicDevice extends ElectronicDevice{
 		_location=location;
 		_signal.sendLocation(location);
 		_singleton.setCattleLocation(this); //accesses to the Database through the Singleton object
-		
 		// Whenever the location of the cattle exceeds the range[0-10], notify observers.
 		if (location<0||location>10) {
 			Notify();

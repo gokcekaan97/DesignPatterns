@@ -25,10 +25,10 @@ public class Singleton{
             Class.forName("org.sqlite.JDBC");
             dbConnection=DriverManager.getConnection("jdbc:sqlite:Cattle.db");
         } catch (ClassNotFoundException e) {
-            // TODO Auto-generated catch block
+        	System.out.println("No definition for the class with the specified name could be found. (Singleton, getConnection) ");
             e.printStackTrace();
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
+        	System.out.println("Database access error or other errors. (Singleton, getConnection) ");
             e.printStackTrace();
         }
         return dbConnection;
@@ -52,14 +52,11 @@ public class Singleton{
 					statement.execute(query);
 					conn.close();
 				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+					System.out.println("Database access error or other errors. (Singleton, addCattle) ");
 				}
 			} 
 			conn2.close();
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
+		} catch (Exception e) {System.out.println("Any exception from addCattle");}
 	}
 	//When a cattle is attached to an electronic device,
 	//stores the cattle's location into the database.
@@ -73,8 +70,7 @@ public class Singleton{
 			statement.executeUpdate(query);
 			conn.close();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println("Database access error or other errors. (Singleton, SetCattleLocation) ");
 		}
 	}
 }
